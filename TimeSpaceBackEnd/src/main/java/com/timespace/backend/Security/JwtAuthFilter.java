@@ -16,10 +16,10 @@ import java.io.IOException;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter{
-    private final com.bacendbasic.basicapi.Security.JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenProvider jwtTokenProvider;
     private final UserDetailsService userDetailsService;
 
-    public JwtAuthFilter(com.bacendbasic.basicapi.Security.JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
+    public JwtAuthFilter(JwtTokenProvider jwtTokenProvider, UserDetailsService userDetailsService) {
         this.jwtTokenProvider = jwtTokenProvider;
         this.userDetailsService = userDetailsService;
     }

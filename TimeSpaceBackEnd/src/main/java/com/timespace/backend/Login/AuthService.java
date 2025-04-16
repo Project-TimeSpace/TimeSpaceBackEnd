@@ -1,8 +1,8 @@
 package com.timespace.backend.Login;
 
-import com.bacendbasic.basicapi.Entity.User;
-import com.bacendbasic.basicapi.Repository.UserRepository;
-import com.bacendbasic.basicapi.Security.JwtTokenProvider;
+import com.timespace.backend.Entity.User;
+import com.timespace.backend.Repository.UserRepository;
+import com.timespace.backend.Security.JwtTokenProvider;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -25,7 +25,7 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public void register(com.bacendbasic.basicapi.Login.RegisterRequestDto request) {
+    public void register(RegisterRequestDto request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("이미 존재하는 이메일입니다.");
         }
@@ -33,14 +33,14 @@ public class AuthService {
         User user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .name(request.getName())
+                .userName(request.getName())
                 .phoneNumber(request.getPhoneNumber())
                 .build();
 
         userRepository.save(user);
     }
 
-    public String login(com.bacendbasic.basicapi.Login.LoginRequestDto request) {
+    public String login(LoginRequestDto request) {
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("email error"));
 

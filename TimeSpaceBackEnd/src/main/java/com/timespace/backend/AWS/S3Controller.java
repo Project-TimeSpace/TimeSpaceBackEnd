@@ -14,7 +14,7 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class S3Controller {
 
-    private final com.bacendbasic.basicapi.AWS.S3Service s3Service;
+    private final S3Service s3Service;
 
     @PostMapping("/upload")
     public ResponseEntity<String> uploadImage(@ModelAttribute UploadRequestDto request) throws IOException {

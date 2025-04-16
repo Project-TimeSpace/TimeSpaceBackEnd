@@ -1,6 +1,6 @@
 package com.timespace.backend.Repository;
 
-import com.bacendbasic.basicapi.Entity.User;
+import com.timespace.backend.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
